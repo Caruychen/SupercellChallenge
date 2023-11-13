@@ -42,6 +42,7 @@ void Game::update()
 void Game::render()
 {
     m_window.beginDraw();
+    m_map.draw();
     m_window.endDraw();
 }
 
