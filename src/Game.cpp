@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Window.h"
 #include "SharedContext.h"
+#include "Map.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <iostream>
@@ -10,7 +11,8 @@
 Game::Game() :
     m_window(&m_context),
     m_inputHandler(&m_context),
-    m_entityHandler(&m_context)
+    m_entityHandler(&m_context),
+    m_map(&m_context)
 {
     m_context.m_clock = &m_clock;
     m_context.m_deltaTime = &m_deltaTime;

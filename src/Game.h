@@ -7,6 +7,7 @@
 #include "InputHandler.h"
 #include "EntityHandler.h"
 #include "Window.h"
+#include "Map.h"
 
 class Game
 {
@@ -27,6 +28,7 @@ private:
     sf::Time        m_deltaTime;
     InputHandler    m_inputHandler;
     EntityHandler   m_entityHandler;
+    Map             m_map;
     Window          m_window;
     sf::Font        m_font;
 };
