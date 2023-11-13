@@ -46,6 +46,11 @@ void EntityHandler::incrementPlayerScore()
     m_player.incrementScore();
 }
 
+void EntityHandler::initPlayerFont()
+{
+    m_player.init();
+}
+
 SharedContext *EntityHandler::getContext()
 {
     return m_context;

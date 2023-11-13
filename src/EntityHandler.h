@@ -17,6 +17,7 @@ public:
     void draw();
     void progressPlayer();
     void incrementPlayerScore();
+    void initPlayerFont();
     
     SharedContext *getContext();
     Player *getPlayer();

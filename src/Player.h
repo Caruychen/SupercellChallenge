@@ -8,6 +8,7 @@ public:
     Player(EntityHandler *handler);
     ~Player();
     
+    void init();
     void setDirection(int direction);
     void handleMovementInput();
     void incrementScore();

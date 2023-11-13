@@ -15,7 +15,6 @@ Character(handler,
 m_score(0),
 m_direction(0)
 {
-    m_text.setFont(*m_handler->getContext()->m_font);
     m_text.setCharacterSize(32);
     m_text.setFillColor(sf::Color::Yellow);
     m_text.setOutlineColor(sf::Color::Black);
@@ -24,6 +23,11 @@ m_direction(0)
 
 Player::~Player()
 {}
+
+void Player::init()
+{
+    m_text.setFont(*m_handler->getContext()->m_font);
+}
 
 void Player::setDirection(int direction)
 {

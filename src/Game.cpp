@@ -34,6 +34,7 @@ bool Game::initialise()
     m_entityHandler.setPlayerPos(m_map.getNextSpawn());
     m_entityHandler.setCoins(m_map.getCoinPositions());
     m_entityHandler.setMovingHazards(m_map.getMovingHazards());
+    m_entityHandler.initPlayerFont();
     restartClock();
     return true;
 }

@@ -11,7 +11,7 @@ Map::Map(SharedContext *context) :
     m_colors.push_back(sf::Color::Black);
     m_colors.push_back(sf::Color::White);
     m_colors.push_back(sf::Color::Red);
-    m_colors.push_back(sf::Color::Blue);
+    m_colors.push_back(sf::Color::Green);
     _readMap("map.txt");
     _loadTiles();
 }
