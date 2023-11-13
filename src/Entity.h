@@ -25,9 +25,9 @@ public:
     void accelerate(const sf::Vector2f value);
     void applyFriction(const float deltaSeconds);
     virtual void update();
+    void respawn();
     
     // Accessors
-    void respawn();
     
 protected:
     void _updateBox();

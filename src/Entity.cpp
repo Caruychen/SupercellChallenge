@@ -36,6 +36,7 @@ void Entity::move(const float x, const float y)
 
 void Entity::move(sf::Vector2f pos)
 {
+    sf::FloatRect viewRect = handler->getContext()->m_window->getViewRect();
     m_position += pos;
     
     if (m_position.x < 0)
