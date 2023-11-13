@@ -211,7 +211,9 @@ void Entity::_resolveCollisions()
         {
             case eTile::eDoor:
                 m_handler->progressPlayer();
-                //add mroe
+            case eTile::eHazard:
+                respawn();
+                return;
             default:
                 break;
         }
