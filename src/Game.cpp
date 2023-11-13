@@ -9,7 +9,8 @@
 
 Game::Game() :
     m_window(&m_context),
-    m_inputHandler(&m_context)
+    m_inputHandler(&m_context),
+    m_entityHandler(&m_context)
 {
     m_context.m_clock = &m_clock;
     m_context.m_deltaTime = &m_deltaTime;
@@ -27,6 +28,7 @@ bool Game::initialise()
         return false;
     }
     m_window.create();
+    restartClock();
     return true;
 }
 

@@ -59,6 +59,11 @@ void Window::endDraw()
     m_window.display();
 }
 
+void Window::draw(sf::Drawable &drawable)
+{
+    m_window.draw(drawable);
+}
+
 void Window::setDone()
 {
     m_isDone = true;

@@ -1,7 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
-class SharedContext;
+struct SharedContext;
 
 class Window
 {
@@ -12,8 +12,10 @@ public:
     void create();
     void destroy();
     void update();
+    
     void beginDraw();
     void endDraw();
+    void draw(sf::Drawable &drawable);
     
     void setDone();
     bool isDone(void) const;

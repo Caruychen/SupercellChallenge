@@ -1,6 +1,6 @@
 #pragma once
 
-class SharedContext;
+struct SharedContext;
 
 class InputHandler
 {

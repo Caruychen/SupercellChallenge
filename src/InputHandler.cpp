@@ -1,4 +1,4 @@
-#include "InputHandler.hpp"
+#include "InputHandler.h"
 #include "SharedContext.h"
 #include "Window.h"
 #include <iostream>
@@ -19,7 +19,6 @@ void InputHandler::pollEvents()
     
     while (window->getRenderWindow()->pollEvent(event))
     {
-        std::cout << "test" << std::endl;
         switch(event.type)
         {
             case sf::Event::Closed:
