@@ -7,7 +7,9 @@
 InputHandler::InputHandler(SharedContext *context) :
 m_context(context),
 m_direction(0),
-m_pressingUp(false)
+m_pressingUp(false),
+m_pressingLeft(false),
+m_pressingRight(false)
 {
     m_context->m_inputHandler = this;
 }
@@ -30,13 +32,13 @@ void InputHandler::pollEvents()
             case sf::Event::KeyPressed:
                 if (event.key.code == sf::Keyboard::Left)
                 {
-                    m_context->m_entityHandler->getPlayer()->setDirection(-1);
                     m_direction = -1;
+                    m_pressingLeft = true;
                 }
-                else if (event.key.code == sf::Keyboard::Right)
+                if (event.key.code == sf::Keyboard::Right)
                 {
-                    m_context->m_entityHandler->getPlayer()->setDirection(1);
                     m_direction = 1;
+                    m_pressingRight = true;
                 }
                 if (event.key.code == sf::Keyboard::Up)
                     m_pressingUp = true;
@@ -62,13 +64,13 @@ void InputHandler::pollEvents()
             case sf::Event::KeyReleased:
                 if (event.key.code == sf::Keyboard::Left)
                 {
-                    m_context->m_entityHandler->getPlayer()->setDirection(0);
                     m_direction = 0;
+                    m_pressingLeft = false;
                 }
                 if (event.key.code == sf::Keyboard::Right)
                 {
-                    m_context->m_entityHandler->getPlayer()->setDirection(0);
                     m_direction = 0;
+                    m_pressingRight = false;
                 }
                 if (event.key.code == sf::Keyboard::Up)
                     m_pressingUp = false;
@@ -77,4 +79,10 @@ void InputHandler::pollEvents()
                 break;
         }
     }
+    
+    m_context->m_entityHandler->getPlayer()->setDirection(0);
+    if (m_pressingLeft)
+        m_context->m_entityHandler->getPlayer()->setDirection(-1);
+    else if (m_pressingRight)
+        m_context->m_entityHandler->getPlayer()->setDirection(1);
 }
