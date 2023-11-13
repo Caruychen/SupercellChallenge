@@ -1,10 +1,3 @@
-//
-//  Window.cpp
-//  Platformer
-//
-//  Created by Caruy Chen on 13.11.2023.
-//
-
 #include "Constants.h"
 #include "Window.h"
 #include "Map.h"

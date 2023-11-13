@@ -19,8 +19,8 @@ void EntityHandler::update()
     m_player.update();
     for (Coin &coin: m_coins)
         coin.update();
-    //for (MovingHazard &hazard: m_movingHazards)
-    //    hazard.update();
+    for (MovingHazard &hazard: m_movingHazards)
+        hazard.update();
 }
 
 void EntityHandler::draw()
@@ -30,8 +30,8 @@ void EntityHandler::draw()
     window->draw(m_player);
     for (Coin &coin: m_coins)
         window->draw(coin);
-    //for (MovingHazard &hazard: m_movingHazards)
-    //    window->draw(hazard);
+    for (MovingHazard &hazard: m_movingHazards)
+        window->draw(hazard);
 }
 
 void EntityHandler::progressPlayer()
@@ -70,7 +70,6 @@ void EntityHandler::setCoins(const std::vector<sf::Vector2f> positions)
 
 void EntityHandler::setMovingHazards(const std::vector<MovingHazardData> data)
 {
-    /*
     for (MovingHazardData d: data)
         m_movingHazards.push_back(MovingHazard(
                                                this,
@@ -78,5 +77,4 @@ void EntityHandler::setMovingHazards(const std::vector<MovingHazardData> data)
                                                d.m_horizontal,
                                                d.m_initialDirection
                                                ));
-     */
 }

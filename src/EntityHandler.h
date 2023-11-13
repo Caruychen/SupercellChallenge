@@ -28,5 +28,5 @@ private:
     SharedContext   *m_context;
     Player          m_player;
     std::vector<Coin> m_coins;
-    //std::vector<MovingHazard> m_movingHazards;
+    std::vector<MovingHazard> m_movingHazards;
 };
