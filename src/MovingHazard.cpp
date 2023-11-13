@@ -3,6 +3,7 @@
 #include "SharedContext.h"
 #include "Constants.h"
 #include "Window.h"
+#include <iostream>
 
 MovingHazard::MovingHazard(
                            EntityHandler *handler,
@@ -23,6 +24,10 @@ m_timer(0.f)
     m_shape.setFillColor(m_color);
     setSpawnPosition(position);
     setPosition(position);
+    setAcceleration(HazardAcceleration, HazardAcceleration);
+    m_velocity = sf::Vector2f(
+                              m_isHorizontal * -m_currentDirection * m_maxVelocity.x,
+                              !m_isHorizontal * -m_currentDirection * m_maxVelocity.y);
 }
 
 MovingHazard::~MovingHazard()
