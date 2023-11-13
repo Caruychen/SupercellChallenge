@@ -37,8 +37,8 @@ void Character::move(const int direction)
     if (m_isDashing)
         return;
     const float deltaSeconds = m_handler->getContext()->m_deltaTime->asSeconds();
-    if (direction > 0 && m_velocity.x > -0.1f ||
-        direction < 0 && m_velocity.x < 0.1f ||
+    if ((direction > 0 && m_velocity.x > -0.1f) ||
+        (direction < 0 && m_velocity.x < 0.1f) ||
         m_isWallJumping)
         m_isMoving = true;
     accelerate(direction * m_accelerationRate * deltaSeconds, 0);

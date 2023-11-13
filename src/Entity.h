@@ -28,6 +28,10 @@ public:
     void respawn();
     
     // Accessors
+    void setSpawnPosition(const sf::Vector2f &pos);
+    void setPosition(const sf::Vector2f &pos);
+    sf::Vector2f getPosition() const;
+    sf::FloatRect getBox() const;
     
 protected:
     void _updateBox();
@@ -50,5 +54,7 @@ protected:
     Collisions          m_collisions;
     
 private:
+    void _dashLimiter(sf::Vector2f &pos);
+    static bool _sortCollisions(const CollisionElement &a, const CollisionElement &b);
     float               m_frictionTimer;
 };

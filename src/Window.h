@@ -22,7 +22,7 @@ public:
     void setDone();
     bool isDone(void) const;
     sf::RenderWindow *getRenderWindow();
-    sf::FloatRect *getViewRect() const;
+    sf::FloatRect getViewRect() const;
     
 private:
     void _updateShake();

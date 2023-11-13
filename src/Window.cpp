@@ -96,12 +96,12 @@ sf::FloatRect Window::getViewRect() const
 
 void Window::_updateShake()
 {
-    const float shakeTimer;
+    static float shakeTimer;
     const float deltaSeconds = m_context->m_deltaTime->asSeconds();
     shakeTimer += deltaSeconds;
     if (m_shakeCount > 0)
     {
-        int direction = (m_shakeCount % 2 = 0) ? 1 : -1;
+        int direction = (m_shakeCount % 2 == 0) ? 1 : -1;
         m_view.reset(sf::FloatRect(
                                    m_viewRect.left + direction * m_shakeCount,
                                    m_viewRect.top + direction * m_shakeCount,

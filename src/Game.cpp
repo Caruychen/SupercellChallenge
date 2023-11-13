@@ -16,6 +16,7 @@ Game::Game() :
 {
     m_context.m_clock = &m_clock;
     m_context.m_deltaTime = &m_deltaTime;
+    m_context.m_font = &m_font;
 }
 
 Game::~Game()
@@ -36,13 +37,16 @@ bool Game::initialise()
 
 void Game::update()
 {
+    m_window.update();
     m_inputHandler.pollEvents();
+    m_entityHandler.update();
 }
 
 void Game::render()
 {
     m_window.beginDraw();
     m_map.draw();
+    m_entityHandler.draw();
     m_window.endDraw();
 }
 
