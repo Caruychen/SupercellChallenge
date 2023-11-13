@@ -31,6 +31,7 @@ void Window::create()
 {
     m_window.create(sf::VideoMode(ScreenWidth, ScreenHeight), "Platformer");
     m_window.setFramerateLimit(FramerateLimit);
+    m_window.setKeyRepeatEnabled(false);
     m_view.setViewport({0.f, 0.f, 1.f, 1.f});
     sf::Vector2f mapSize = m_context->m_map->getSize();
     m_viewRect = {0, mapSize.y - ScreenHeight, ScreenWidth, ScreenHeight};

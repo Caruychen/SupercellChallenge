@@ -48,3 +48,8 @@ void EntityHandler::setPlayerPos(const sf::Vector2f &position)
     m_player.setSpawnPosition(position);
     m_player.setPosition(position);
 }
+
+Player *EntityHandler::getPlayer()
+{
+    return &m_player;
+}

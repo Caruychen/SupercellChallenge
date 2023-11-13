@@ -6,6 +6,7 @@
 #include "MathUtils.h"
 #include "Constants.h"
 #include <cmath>
+#include <iostream>
 
 Entity::Entity(
                EntityHandler *handler,
@@ -78,6 +79,8 @@ void Entity::accelerate(const float x, const float y)
 
 void Entity::accelerate(const sf::Vector2f value)
 {
+    if (!m_isMoving)
+        m_acceleration.x = 0;
     m_acceleration += value;
     _clamp(&m_acceleration, m_maxAcceleration);
 }
@@ -91,9 +94,9 @@ void Entity::applyFriction(const float deltaSeconds)
             m_velocity.x = 0.f;
         else if (m_frictionTimer > 0.01f)
         {
-            if (m_isMoving)
+            if (!m_isMoving)
                 m_velocity.x *= 0.05f;
-            else if (m_collidingY && abs(m_velocity.x) > abs(m_maxVelocity.x))
+            else if (!m_collidingY && abs(m_velocity.x) > abs(m_maxVelocity.x))
                 m_velocity.x *= 0.95f;
         }
     }

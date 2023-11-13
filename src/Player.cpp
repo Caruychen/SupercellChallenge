@@ -12,7 +12,8 @@ Character(handler,
          sf::Vector2f(PlayerDashVelocityX, PlayerDashVelocityY),
          PlayerAcceleration,
          PlayerJumpVelocity),
-m_score(0)
+m_score(0),
+m_direction(0)
 {
     m_text.setFont(*m_handler->getContext()->m_font);
     m_text.setCharacterSize(32);
@@ -24,23 +25,22 @@ m_score(0)
 Player::~Player()
 {}
 
+void Player::setDirection(int direction)
+{
+    m_direction = direction;
+}
+
 void Player::handleMovementInput()
 {
     m_isMoving = false;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-    {
-        std::cout <<"test" << std::endl;
-        move(-1);
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        move(1);
+    if (m_direction != 0)
+        move(m_direction);
 }
 
 void Player::incrementScore()
 {
     m_score++;
 }
-
 
 void Player::update()
 {
