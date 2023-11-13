@@ -1,7 +1,9 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "CollisionElement.h"
 
+using Collisions = std::vector<CollisionElement>;
 class EntityHandler;
 
 class Entity
@@ -47,4 +49,5 @@ private:
     bool                m_collidingY;
     bool                m_collidingYBottom;
     sf::FloatRect       m_box;
+    Collisions          m_collisions;
 };
