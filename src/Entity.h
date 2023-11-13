@@ -14,6 +14,7 @@ public:
            const sf::Vector2f maxAcceleration);
     ~Entity();
     
+    // Methods
     void move(const float x, const float y);
     void move(sf::Vector2f pos);
     void addVelocity(const float x, const float y);
@@ -21,8 +22,10 @@ public:
     void accelerate(const float x, const float y);
     void accelerate(const sf::Vector2f value);
     void addFriction(const float deltaSeconds);
-    
     virtual void update();
+    
+    // Accessors
+    void respawn();
     
 protected:
     void _updateBox();

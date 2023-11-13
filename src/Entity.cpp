@@ -1,4 +1,6 @@
 #include "Entity.h"
+#include "MathUtils.h"
+#include <cmath>
 
 Entity::Entity(
                EntityHandler *handler,
@@ -29,7 +31,10 @@ void Entity::move(const float x, const float y)
 }
 
 void Entity::move(sf::Vector2f pos)
-{}
+{
+    m_position += pos;
+    _updateBox();
+}
 
 void Entity::addVelocity(const float x, const float y)
 {
@@ -53,6 +58,9 @@ void Entity::addFriction(const float deltaSeconds)
 void Entity::update()
 {}
 
+void Entity::respawn()
+{}
+
 void Entity::_updateBox()
 {}
 
@@ -61,3 +69,5 @@ void Entity::_checkCollisions()
 
 void Entity::_resolveCollisions()
 {}
+
+// Private
