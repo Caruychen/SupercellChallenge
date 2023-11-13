@@ -142,6 +142,15 @@ void Entity::setPosition(const sf::Vector2f &pos)
     m_position = pos;
     _updateBox();
 }
+void Entity::setAcceleration(const float x, const float y)
+{
+    setAcceleration(sf::Vector2f(x, y));
+}
+
+void Entity::setAcceleration(const sf::Vector2f acc)
+{
+    m_acceleration = acc;
+}
 
 sf::Vector2f Entity::getPosition() const
 {

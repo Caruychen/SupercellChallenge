@@ -19,8 +19,12 @@ const float PlayerMaxAccelerationX = 5000;
 const float PlayerMaxAccelerationY = 2000;
 
 
-const float CoinRadius = 17.0f;
+const float CoinRadius = 9.0f;
 
+const float HazardSize = 25;
+const float HazardMaxVelocity = 350;
+const float HazardMaxAcceleration = 5000;
+const float HazardAcceleration = 500;
 
 const float TileSize = 25;
 
@@ -32,5 +36,9 @@ enum class eTile
     eDoor           = 3,
 	ePlayerSpawn	= 4,
     eCoin           = 5,
+    eHazardH        = 6,
+    eHazardV        = 7,
+    eHazardHRev     = 8,
+    eHazardVRev     = 9,
     eMax
 };

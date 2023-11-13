@@ -30,6 +30,8 @@ public:
     // Accessors
     void setSpawnPosition(const sf::Vector2f &pos);
     void setPosition(const sf::Vector2f &pos);
+    void setAcceleration(const float x, const float y);
+    void setAcceleration(const sf::Vector2f acc);
     sf::Vector2f getPosition() const;
     sf::FloatRect getBox() const;
     

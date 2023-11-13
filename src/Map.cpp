@@ -57,6 +57,11 @@ std::vector<sf::Vector2f> Map::getCoinPositions() const
     return m_coinPositions;
 }
 
+std::vector<MovingHazardData> Map::getMovingHazards() const
+{
+    return m_movingHazards;
+}
+
 bool Map::_readMap(const std::string &name)
 {
     std::string assetPath = Resources::getAssetPath();
@@ -93,6 +98,22 @@ bool Map::_readMap(const std::string &name)
                 break;
             case eTile::eCoin:
                 m_coinPositions.push_back(sf::Vector2f(row->size() * TileSize, index * TileSize));
+                row->push_back(eTile::eEmpty);
+                break;
+            case eTile::eHazardH:
+                m_movingHazards.push_back(MovingHazardData(sf::Vector2f(row->size() * TileSize, index * TileSize), true, 1.f));
+                row->push_back(eTile::eEmpty);
+                break;
+            case eTile::eHazardV:
+                m_movingHazards.push_back(MovingHazardData(sf::Vector2f(row->size() * TileSize, index * TileSize), false, 1.f));
+                row->push_back(eTile::eEmpty);
+                break;
+            case eTile::eHazardHRev:
+                m_movingHazards.push_back(MovingHazardData(sf::Vector2f(row->size() * TileSize, index * TileSize), true, -1.f));
+                row->push_back(eTile::eEmpty);
+                break;
+            case eTile::eHazardVRev:
+                m_movingHazards.push_back(MovingHazardData(sf::Vector2f(row->size() * TileSize, index * TileSize), false, -1.f));
                 row->push_back(eTile::eEmpty);
                 break;
             default:
