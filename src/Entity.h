@@ -23,7 +23,7 @@ public:
     void addVelocity(const sf::Vector2f value);
     void accelerate(const float x, const float y);
     void accelerate(const sf::Vector2f value);
-    void addFriction(const float deltaSeconds);
+    void applyFriction(const float deltaSeconds);
     virtual void update();
     
     // Accessors
@@ -37,8 +37,6 @@ protected:
     EntityHandler   *m_handler;
     sf::Vector2f        m_velocity;
     sf::Vector2f        m_acceleration;
-    
-private:
     const sf::Vector2f  m_size;
     const sf::Vector2f  m_maxVelocity;
     const sf::Vector2f  m_maxAcceleration;
@@ -50,4 +48,7 @@ private:
     bool                m_collidingYBottom;
     sf::FloatRect       m_box;
     Collisions          m_collisions;
+    
+private:
+    float               m_frictionTimer;
 };
