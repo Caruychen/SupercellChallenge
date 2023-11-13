@@ -1,7 +1,7 @@
 #pragma once
 
-const int ScreenWidth = 800;
-const int ScreenHeight = 600;
+const int ScreenWidth = 1200;
+const int ScreenHeight = 675;
 
 const float Gravity = 180.0f;
 const float JumpYVelocity = -230.0f;

@@ -6,12 +6,17 @@
 //
 
 #include "Constants.h"
-#include "Window.hpp"
+#include "Window.h"
+#include "SharedContext.h"
 
 #include <SFML/Graphics.hpp>
 
-Window::Window() : m_isDone(false)
-{}
+Window::Window(SharedContext *context) :
+    m_context(context),
+    m_isDone(false)
+{
+    m_context->m_window = this;
+}
 
 Window::~Window()
 {}
@@ -29,6 +34,7 @@ void Window::destroy()
 
 void Window::update()
 {
+    /*
     sf::Event event;
     while (m_window.pollEvent(event))
     {
@@ -40,6 +46,7 @@ void Window::update()
                 break;
         }
     }
+     */
 }
 
 void Window::beginDraw()
@@ -60,4 +67,9 @@ void Window::setDone()
 bool Window::isDone() const
 {
     return m_isDone;
+}
+
+sf::RenderWindow *Window::getRenderWindow()
+{
+    return &this->m_window;
 }

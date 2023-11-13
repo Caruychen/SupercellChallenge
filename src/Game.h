@@ -1,10 +1,15 @@
 #pragma once
 
-#include <SFML/Graphics/Drawable.hpp>
-#include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics.hpp>
 #include <memory>
 #include "Constants.h"
-#include "Window.hpp"
+#include "SharedContext.h"
+#include "InputHandler.hpp"
+#include "Window.h"
+
+class Window;
+class InputHandler;
+class SharedContext;
 
 class Game
 {
@@ -20,8 +25,10 @@ public:
     bool isRunning() const;
 
 private:
-    sf::Clock m_clock;
-    sf::Time m_deltaTime;
-    Window m_window;
-    sf::Font m_font;
+    SharedContext   m_context;
+    sf::Clock       m_clock;
+    sf::Time        m_deltaTime;
+    InputHandler    m_inputHandler;
+    Window          m_window;
+    sf::Font        m_font;
 };

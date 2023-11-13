@@ -1,14 +1,19 @@
 #include "Game.h"
-#include "Window.hpp"
-
+#include "Window.h"
+#include "SharedContext.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <iostream>
 
 #include "resources/Resources.h"
 
-Game::Game()
-{}
+Game::Game() :
+    m_window(&m_context),
+    m_inputHandler(&m_context)
+{
+    m_context.m_clock = &m_clock;
+    m_context.m_deltaTime = &m_deltaTime;
+}
 
 Game::~Game()
 {}
@@ -27,7 +32,7 @@ bool Game::initialise()
 
 void Game::update()
 {
-    m_window.update();
+    m_inputHandler.pollEvents();
 }
 
 void Game::render()

@@ -1,11 +1,12 @@
 #pragma once
 #include <stdio.h>
 #include <SFML/Graphics.hpp>
+class SharedContext;
 
 class Window
 {
 public:
-    Window();
+    Window(SharedContext *context);
     ~Window();
     
     void create();
@@ -16,8 +17,10 @@ public:
     
     void setDone();
     bool isDone(void) const;
+    sf::RenderWindow *getRenderWindow();
     
 private:
+    SharedContext *m_context;
     sf::RenderWindow m_window;
     bool m_isDone;
 };
