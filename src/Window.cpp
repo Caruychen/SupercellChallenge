@@ -7,24 +7,34 @@
 
 #include "Constants.h"
 #include "Window.h"
+#include "Map.h"
 #include "SharedContext.h"
 
 #include <SFML/Graphics.hpp>
 
 Window::Window(SharedContext *context) :
-    m_context(context),
-    m_isDone(false)
+m_context(context),
+m_isDone(false),
+m_shakeCount(0),
+m_viewRect({0.f, 0.f, ScreenWidth, ScreenHeight}),
+m_view(m_viewRect)
 {
     m_context->m_window = this;
 }
 
 Window::~Window()
-{}
+{
+    destroy();
+}
 
 void Window::create()
 {
     m_window.create(sf::VideoMode(ScreenWidth, ScreenHeight), "Platformer");
-    m_window.setFramerateLimit(60);
+    m_window.setFramerateLimit(FramerateLimit);
+    m_view.setViewport({0.f, 0.f, 1.f, 1.f});
+    sf::Vector2f mapSize = m_context->m_map->getSize();
+    m_viewRect = {0, mapSize.y - ScreenHeight, ScreenWidth, ScreenHeight};
+    m_view.reset(m_viewRect);
 }
 
 void Window::destroy()
@@ -34,19 +44,19 @@ void Window::destroy()
 
 void Window::update()
 {
-    /*
-    sf::Event event;
-    while (m_window.pollEvent(event))
-    {
-        switch (event.type)
-        {
-            case sf::Event::Closed:
-                setDone();
-            default:
-                break;
-        }
-    }
-     */
+    m_view.reset(m_viewRect);
+    _updateShake();
+    m_window.setView(m_view);
+}
+
+void Window::shake()
+{
+    m_shakeCount = 4;
+}
+
+void Window::shiftViewUp()
+{
+    m_viewRect.top -= ScreenHeight;
 }
 
 void Window::beginDraw()
@@ -77,4 +87,30 @@ bool Window::isDone() const
 sf::RenderWindow *Window::getRenderWindow()
 {
     return &this->m_window;
+}
+
+sf::FloatRect Window::getViewRect() const
+{
+    return m_viewRect;
+}
+
+void Window::_updateShake()
+{
+    const float shakeTimer;
+    const float deltaSeconds = m_context->m_deltaTime->asSeconds();
+    shakeTimer += deltaSeconds;
+    if (m_shakeCount > 0)
+    {
+        int direction = (m_shakeCount % 2 = 0) ? 1 : -1;
+        m_view.reset(sf::FloatRect(
+                                   m_viewRect.left + direction * m_shakeCount,
+                                   m_viewRect.top + direction * m_shakeCount,
+                                   ScreenWidth,
+                                   ScreenHeight));
+        if (shakeTimer > 0.05f)
+        {
+            shakeTimer = 0;
+            --m_shakeCount;
+        }
+    }
 }
