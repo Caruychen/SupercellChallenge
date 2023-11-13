@@ -21,7 +21,7 @@ public:
     
     void move(const int direction);
     void jump();
-    bool dash();
+    bool dash(int direction);
     
     virtual void update();
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;

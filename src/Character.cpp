@@ -63,7 +63,7 @@ void Character::jump()
         m_velocity.x = -m_currentDirection * m_jumpVelocity;
 }
 
-bool Character::dash()
+bool Character::dash(int direction)
 {
     if (!m_canDash || m_isDashing)
         return false;
@@ -71,15 +71,29 @@ bool Character::dash()
     m_isDashing = true;
     m_dashTimer = 0;
     m_acceleration = {0, 0};
-    m_velocity = {0, 0};
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        m_velocity.x = -m_dashVelocity.x;
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        m_velocity.x = m_dashVelocity.x;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    m_velocity = {m_currentDirection * m_dashVelocity.x, 0};
+    switch (direction)
     {
-        m_velocity.y = -m_dashVelocity.y;
-        m_velocity.x *= 0.8f;
+        case 1:
+            m_velocity.x = -m_dashVelocity.x;
+            break;
+        case 2:
+            m_velocity.x = m_dashVelocity.x;
+            break;
+        case 3:
+            m_velocity.y = -m_dashVelocity.y;
+            m_velocity.x = 0;
+            break;
+        case 4:
+            m_velocity.y = -m_dashVelocity.y;
+            m_velocity.x = -m_dashVelocity.x;
+            break;
+        case 5:
+            m_velocity.y = -m_dashVelocity.y;
+            m_velocity.x = m_dashVelocity.x;
+            break;
+        default:
+            break;
     }
     m_shape.setFillColor(m_dashColor);
     return true;

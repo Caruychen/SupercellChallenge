@@ -12,4 +12,6 @@ public:
     
 private:
     SharedContext *m_context;
+    int m_direction;
+    bool m_pressingUp;
 };
