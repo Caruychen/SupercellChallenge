@@ -42,7 +42,15 @@ void Entity::addVelocity(const float x, const float y)
 }
 
 void Entity::addVelocity(const sf::Vector2f value)
-{}
+{
+    if (m_collidingY || abs(m_velocity.x) <= abs(m_maxVelocity.x))
+    {
+        m_velocity.x += value.x;
+        _clamp(&m_velocity.x, m_maxVelocity.x);
+    }
+    m_velocity.y += value.y;
+    _clamp(&m_velocity.y, m_maxVelocity.y);
+}
 
 void Entity::accelerate(const float x, const float y)
 {
