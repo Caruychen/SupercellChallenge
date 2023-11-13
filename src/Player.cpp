@@ -2,6 +2,7 @@
 #include "EntityHandler.h"
 #include "SharedContext.h"
 #include "Window.h"
+#include <iostream>
 
 Player::Player(EntityHandler *handler) :
 Character(handler,
@@ -27,7 +28,10 @@ void Player::handleMovementInput()
 {
     m_isMoving = false;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    {
+        std::cout <<"test" << std::endl;
         move(-1);
+    }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         move(1);
 }

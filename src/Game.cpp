@@ -31,6 +31,7 @@ bool Game::initialise()
         return false;
     }
     m_window.create();
+    m_entityHandler.setPlayerPos(m_map.getNextSpawn());
     restartClock();
     return true;
 }
