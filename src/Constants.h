@@ -3,7 +3,7 @@
 const int ScreenWidth = 1200;
 const int ScreenHeight = 675;
 
-const float Gravity = 180.0f;
+const float Gravity = 18000.0f;
 const float JumpYVelocity = -230.0f;
 
 const float PlayerHeight = 60.0f;
